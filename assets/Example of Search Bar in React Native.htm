@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"><meta name="description" content="Search Bar in React Native Example"><title>Example of Search Bar in React Native</title><meta property="og:url" content="https://snack.expo.io/@aboutreact/example-of-search-bar-in-react-native"><meta property="og:title" content="Example of Search Bar in React Native"><meta property="og:description" content="Search Bar in React Native Example"><meta property="og:type" content="website"><meta property="og:image" content="https://s3.amazonaws.com/exp-brand-assets/SnackIcon_200.png"><meta property="og:image:width" content="200"><meta property="og:image:height" content="200"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@expo"><meta name="twitter:title" content="Example of Search Bar in React Native"><meta name="twitter:description" content="Search Bar in React Native Example"><meta name="twitter:image" content="https://s3.amazonaws.com/exp-brand-assets/SnackIcon_200.png"><meta name="google-site-verification" content="Fh25fNM-buRYptb-TO6MVgOjXGzdhmAnRgIC7sdrmbw"><link rel="shortcut icon" href="https://snack.expo.io/favicon.ico"><link rel="stylesheet" href="Example%20of%20Search%20Bar%20in%20React%20Native_files/css.css"><link rel="stylesheet" href="Example%20of%20Search%20Bar%20in%20React%20Native_files/normalize.css"><style type="text/css">
+                :root {
+                  --font-normal: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                  --font-monospace: 'Fira Code', 'Fira Mono', Monaco, Menlo, 'Ubuntu Mono', Consolas,
+                    source-code-pro, monospace;
+                }
+
+                html {
+                  box-sizing: border-box;
+                }
+
+                *,
+                *:before,
+                *:after {
+                  box-sizing: inherit;
+                }
+
+                *:focus {
+                  outline: none;
+                }
+
+                *:focus-visible {
+                  outline: auto;
+                }
+
+                html,
+                body {
+                  height: 100%;
+                  width: 100%;
+                  overflow: hidden;
+                }
+
+                body {
+                  font-family: var(--font-normal);
+                  font-size: 14px;
+                  line-height: 1.42857143;
+                  overscroll-behavior: none;
+                }
+
+                div {
+                  scrollbar-width: thin;
+                  scrollbar-color: var(--color-disabled) var(--color-background);
+                }
+
+                @media (hover) {
+                  ::-webkit-scrollbar {
+                    width: 12px;
+                    height: 12px;
+                    background: var(--color-background);
+                  }
+                  ::-webkit-scrollbar-thumb {
+                    background: var(--color-disabled);
+                    border-radius: 10px;
+                    border: 3px var(--color-background) solid;
+                  }
+                }
+
+                button,
+                input,
+                select,
+                textarea {
+                  font: inherit;
+                  color: inherit;
+                  line-height: inherit;
+                }
+
+                button {
+                  cursor: pointer;
+                }
+
+                button[disabled] {
+                  cursor: default;
+                }
+
+                #root {
+                  height: 100vh;
+                }
+
+                a {
+                  color: #4099ff;
+                }
+              </style><style type="text/css" data-aphrodite="true">._pyl55co{height:100% !important;width:100% !important;--color-primary:#7F6DF3 !important;--color-secondary:#ffffff !important;--color-error:#FF392B !important;--color-warning:#FFB600 !important;--color-success:#2EB524 !important;--color-primary-text:#ffffff !important;--color-secondary-text:#000020 !important;--color-error-text:#ffffff !important;--color-warning-text:#ffffff !important;--color-success-text:#ffffff !important;--color-text:#EBEBEB !important;--color-soft:#8F8F8F !important;--color-soft-text:#000020 !important;--color-background:#212121 !important;--color-content:#2F2F2F !important;--color-hover:#5C5C5C !important;--color-disabled:#5C5C5C !important;--color-selected:#ffffff !important;--color-selected-text:#2F2F2F !important;--color-border:#3B3B3B !important;--shadow-popover:none !important;--shadow-small:none !important;}._1pcb09u{-webkit-box-direction:normal !important;-webkit-box-orient:vertical !important;display:-webkit-box !important;display:-moz-box !important;display:-ms-flexbox !important;display:-webkit-flex !important;display:flex !important;-webkit-flex-direction:column !important;-ms-flex-direction:column !important;flex-direction:column !important;height:100% !important;width:100% !important;overflow:hidden !important;background-color:var(--color-background) !important;color:var(--color-text) !important;}@keyframes keyframe_9gmgni{0%{-webkit-transform:scale3d(0, 1, 1);-ms-transform:scale3d(0, 1, 1);transform:scale3d(0, 1, 1);opacity:1;}75%{-webkit-transform:scale3d(1, 1, 1);-ms-transform:scale3d(1, 1, 1);transform:scale3d(1, 1, 1);opacity:1;}100%{-webkit-transform:scale3d(1, 1, 1);-ms-transform:scale3d(1, 1, 1);transform:scale3d(1, 1, 1);opacity:0;}}._n39zzn{position:absolute !important;left:0px !important;right:0px !important;height:2px !important;z-index:1 !important;background-color:var(--color-primary) !important;-webkit-transform:scale3d(0, 1, 1) !important;-ms-transform:scale3d(0, 1, 1) !important;transform:scale3d(0, 1, 1) !important;-webkit-transform-origin:top left !important;-ms-transform-origin:top left !important;transform-origin:top left !important;-webkit-animation-name:keyframe_9gmgni !important;animation-name:keyframe_9gmgni !important;-webkit-animation-iteration-count:infinite !important;animation-iteration-count:infinite !important;}._1ni954r{-webkit-box-pack:justify !important;-ms-flex-pack:justify !important;-webkit-box-align:center !important;-ms-flex-align:center !important;-webkit-box-direction:normal !important;-webkit-box-orient:horizontal !important;display:-webkit-box !important;display:-moz-box !important;display:-ms-flexbox !important;display:-webkit-flex !important;display:flex !important;-webkit-flex-direction:row !important;-ms-flex-direction:row !important;flex-direction:row !important;-webkit-align-items:center !important;align-items:center !important;-webkit-justify-content:space-between !important;justify-content:space-between !important;padding:4px !important;height:48px !important;background-color:var(--color-content) !important;border-bottom:1px solid var(--color-border) !important;color:var(--color-text) !important;}._1c40t29{-webkit-box-pack:center !important;-ms-flex-pack:center !important;-webkit-box-align:center !important;-ms-flex-align:center !important;display:-webkit-box !important;display:-moz-box !important;display:-ms-flexbox !important;display:-webkit-flex !important;display:flex !important;height:100% !important;width:100% !important;-webkit-align-items:center !important;align-items:center !important;-webkit-justify-content:center !important;justify-content:center !important;}._4w0mhx{-webkit-transform:scale(0.4) !important;-ms-transform:scale(0.4) !important;transform:scale(0.4) !important;opacity:0.2 !important;}._p6qm3x{position:relative !important;height:182px !important;width:182px !important;overflow:hidden !important;}@keyframes keyframe_1ysemx{0%{opacity:0;}39.9%{opacity:0;}40%{-webkit-transform:translate3d(78px, 68.5px, 0);-ms-transform:translate3d(78px, 68.5px, 0);transform:translate3d(78px, 68.5px, 0);opacity:1;}50%{-webkit-transform:translate3d(39px, 46.5px, 0);-ms-transform:translate3d(39px, 46.5px, 0);transform:translate3d(39px, 46.5px, 0);}}._1b0gwq5m{position:absolute !important;top:0px !important;left:0px !important;-webkit-animation-duration:4s !important;animation-duration:4s !important;-webkit-animation-delay:1s !important;animation-delay:1s !important;-webkit-animation-iteration-count:infinite !important;animation-iteration-count:infinite !important;-webkit-animation-direction:alternate-reverse !important;animation-direction:alternate-reverse !important;-webkit-transform:translate3d(39px, 46.5px, 0) !important;-ms-transform:translate3d(39px, 46.5px, 0) !important;transform:translate3d(39px, 46.5px, 0) !important;-webkit-animation-name:keyframe_1ysemx !important;animation-name:keyframe_1ysemx !important;}@keyframes keyframe_1a1qkd5{0%{opacity:0;}49.9%{opacity:0;}50%{-webkit-transform:translate3d(39px, 46.5px, 0);-ms-transform:translate3d(39px, 46.5px, 0);transform:translate3d(39px, 46.5px, 0);opacity:1;}60%{-webkit-transform:translate3d(39px, 0px, 0);-ms-transform:translate3d(39px, 0px, 0);transform:translate3d(39px, 0px, 0);}}._14l78d6g{position:absolute !important;top:0px !important;left:0px !important;-webkit-animation-duration:4s !important;animation-duration:4s !important;-webkit-animation-delay:1s !important;animation-delay:1s !important;-webkit-animation-iteration-count:infinite !important;animation-iteration-count:infinite !important;-webkit-animation-direction:alternate-reverse !important;animation-direction:alternate-reverse !important;-webkit-transform:translate3d(39px, 0px, 0) !important;-ms-transform:translate3d(39px, 0px, 0) !important;transform:translate3d(39px, 0px, 0) !important;-webkit-animation-name:keyframe_1a1qkd5 !important;animation-name:keyframe_1a1qkd5 !important;}@keyframes keyframe_10mcliz{}._1tvj80n9{position:absolute !important;top:0px !important;left:0px !important;-webkit-animation-duration:4s !important;animation-duration:4s !important;-webkit-animation-delay:1s !important;animation-delay:1s !important;-webkit-animation-iteration-count:infinite !important;animation-iteration-count:infinite !important;-webkit-animation-direction:alternate-reverse !important;animation-direction:alternate-reverse !important;-webkit-transform:translate3d(0, 68.5px, 0) !important;-ms-transform:translate3d(0, 68.5px, 0) !important;transform:translate3d(0, 68.5px, 0) !important;-webkit-animation-name:keyframe_10mcliz !important;animation-name:keyframe_10mcliz !important;}@keyframes keyframe_1omr31l{0%{opacity:0;}29.9%{opacity:0;}30%{-webkit-transform:translate3d(39px, 90px, 0);-ms-transform:translate3d(39px, 90px, 0);transform:translate3d(39px, 90px, 0);opacity:1;}40%{-webkit-transform:translate3d(78px, 68.5px, 0);-ms-transform:translate3d(78px, 68.5px, 0);transform:translate3d(78px, 68.5px, 0);}}._1cqt99fk{position:absolute !important;top:0px !important;left:0px !important;-webkit-animation-duration:4s !important;animation-duration:4s !important;-webkit-animation-delay:1s !important;animation-delay:1s !important;-webkit-animation-iteration-count:infinite !important;animation-iteration-count:infinite !important;-webkit-animation-direction:alternate-reverse !important;animation-direction:alternate-reverse !important;-webkit-transform:translate3d(78px, 68.5px, 0) !important;-ms-transform:translate3d(78px, 68.5px, 0) !important;transform:translate3d(78px, 68.5px, 0) !important;-webkit-animation-name:keyframe_1omr31l !important;animation-name:keyframe_1omr31l !important;}@keyframes keyframe_1pbmn7q{0%{-webkit-transform:translate3d(0, 68.5px, 0);-ms-transform:translate3d(0, 68.5px, 0);transform:translate3d(0, 68.5px, 0);}20%{-webkit-transform:translate3d(0, 68.5px, 0);-ms-transform:translate3d(0, 68.5px, 0);transform:translate3d(0, 68.5px, 0);}30%{-webkit-transform:translate3d(39px, 90px, 0);-ms-transform:translate3d(39px, 90px, 0);transform:translate3d(39px, 90px, 0);}}._1fho7xh9{position:absolute !important;top:0px !important;left:0px !important;-webkit-animation-duration:4s !important;animation-duration:4s !important;-webkit-animation-delay:1s !important;animation-delay:1s !important;-webkit-animation-iteration-count:infinite !important;animation-iteration-count:infinite !important;-webkit-animation-direction:alternate-reverse !important;animation-direction:alternate-reverse !important;-webkit-transform:translate3d(39px, 90px, 0) !important;-ms-transform:translate3d(39px, 90px, 0) !important;transform:translate3d(39px, 90px, 0) !important;-webkit-animation-name:keyframe_1pbmn7q !important;animation-name:keyframe_1pbmn7q !important;}@keyframes keyframe_b5qg5v{0%{opacity:0;}59.9%{opacity:0;}60%{-webkit-transform:translate3d(39px, 0px, 0);-ms-transform:translate3d(39px, 0px, 0);transform:translate3d(39px, 0px, 0);opacity:1;}70%{-webkit-transform:translate3d(0, 23px, 0);-ms-transform:translate3d(0, 23px, 0);transform:translate3d(0, 23px, 0);}}._l9xbyq9{position:absolute !important;top:0px !important;left:0px !important;-webkit-animation-duration:4s !important;animation-duration:4s !important;-webkit-animation-delay:1s !important;animation-delay:1s !important;-webkit-animation-iteration-count:infinite !important;animation-iteration-count:infinite !important;-webkit-animation-direction:alternate-reverse !important;animation-direction:alternate-reverse !important;-webkit-transform:translate3d(0, 23px, 0) !important;-ms-transform:translate3d(0, 23px, 0) !important;transform:translate3d(0, 23px, 0) !important;-webkit-animation-name:keyframe_b5qg5v !important;animation-name:keyframe_b5qg5v !important;}@keyframes keyframe_841g8u{0%{opacity:0;}69.9%{opacity:0;}70%{-webkit-transform:translate3d(0, 23px, 0);-ms-transform:translate3d(0, 23px, 0);transform:translate3d(0, 23px, 0);opacity:1;}80%{-webkit-transform:translate3d(39px, 42.5px, 0);-ms-transform:translate3d(39px, 42.5px, 0);transform:translate3d(39px, 42.5px, 0);}}._1oufavzh{position:absolute !important;top:0px !important;left:0px !important;-webkit-animation-duration:4s !important;animation-duration:4s !important;-webkit-animation-delay:1s !important;animation-delay:1s !important;-webkit-animation-iteration-count:infinite !important;animation-iteration-count:infinite !important;-webkit-animation-direction:alternate-reverse !important;animation-direction:alternate-reverse !important;-webkit-transform:translate3d(39px, 42.5px, 0) !important;-ms-transform:translate3d(39px, 42.5px, 0) !important;transform:translate3d(39px, 42.5px, 0) !important;-webkit-animation-name:keyframe_841g8u !important;animation-name:keyframe_841g8u !important;}@keyframes keyframe_1x1yick{0%{-webkit-transform:translate3d(133px, 12.5px, 0) scale(0);-ms-transform:translate3d(133px, 12.5px, 0) scale(0);transform:translate3d(133px, 12.5px, 0) scale(0);}80%{-webkit-transform:translate3d(133px, 12.5px, 0) scale(0);-ms-transform:translate3d(133px, 12.5px, 0) scale(0);transform:translate3d(133px, 12.5px, 0) scale(0);}90%{-webkit-transform:translate3d(133px, 12.5px, 0) scale(1);-ms-transform:translate3d(133px, 12.5px, 0) scale(1);transform:translate3d(133px, 12.5px, 0) scale(1);}}._ce1yvye{position:absolute !important;top:0px !important;left:0px !important;-webkit-animation-duration:4s !important;animation-duration:4s !important;-webkit-animation-delay:1s !important;animation-delay:1s !important;-webkit-animation-iteration-count:infinite !important;animation-iteration-count:infinite !important;-webkit-animation-direction:alternate-reverse !important;animation-direction:alternate-reverse !important;-webkit-transform:translate3d(133px, 12.5px, 0) !important;-ms-transform:translate3d(133px, 12.5px, 0) !important;transform:translate3d(133px, 12.5px, 0) !important;-webkit-animation-name:keyframe_1x1yick !important;animation-name:keyframe_1x1yick !important;}._1xgmrj2{-webkit-box-align:center !important;-ms-flex-align:center !important;-webkit-box-direction:normal !important;-webkit-box-orient:horizontal !important;display:-webkit-box !important;display:-moz-box !important;display:-ms-flexbox !important;display:-webkit-flex !important;display:flex !important;-webkit-flex-direction:row !important;-ms-flex-direction:row !important;flex-direction:row !important;-webkit-align-items:center !important;align-items:center !important;color:var(--color-disabled) !important;-webkit-transition:background .2s !important;-moz-transition:background .2s !important;transition:background .2s !important;padding:0 4px !important;font-size:12px !important;height:26px !important;}</style><script async="" src="Example%20of%20Search%20Bar%20in%20React%20Native_files/analytics.js"></script><script type="text/javascript" integrity="sha384-girahbTbYZ9tT03PWWj0mEVgyxtZoyDF9KVZdL+R53PP5wCY0PiVUKq0jeRlMx9M" crossorigin="anonymous" async="" src="Example%20of%20Search%20Bar%20in%20React%20Native_files/amplitude-7.js"></script><script>
+               window.__INITIAL_DATA__ = {"data":{"type":"success","snack":{"id":"4dd2edd9-086a-461a-9207-59dac98ed392","hashId":"4ozbKsjYc","code":{"App.js":{"contents":"// Searching using Search Bar Filter in React Native List View\n// https://aboutreact.com/react-native-search-bar-filter-on-listview/\n\n// import React in our code\nimport React, { useState, useEffect } from 'react';\n\n// import all the components we are going to use\nimport { SafeAreaView, Text, StyleSheet, View, FlatList } from 'react-native';\nimport { SearchBar } from 'react-native-elements';\n\nconst App = () => {\n  const [search, setSearch] = useState('');\n  const [filteredDataSource, setFilteredDataSource] = useState([]);\n  const [masterDataSource, setMasterDataSource] = useState([]);\n\n  useEffect(() => {\n    fetch('https://jsonplaceholder.typicode.com/posts')\n      .then((response) => response.json())\n      .then((responseJson) => {\n        setFilteredDataSource(responseJson);\n        setMasterDataSource(responseJson);\n      })\n      .catch((error) => {\n        console.error(error);\n      });\n  }, []);\n\n  const searchFilterFunction = (text) => {\n    // Check if searched text is not blank\n    if (text) {\n      // Inserted text is not blank\n      // Filter the masterDataSource\n      // Update FilteredDataSource\n      const newData = masterDataSource.filter(function (item) {\n        const itemData = item.title\n          ? item.title.toUpperCase()\n          : ''.toUpperCase();\n        const textData = text.toUpperCase();\n        return itemData.indexOf(textData) > -1;\n      });\n      setFilteredDataSource(newData);\n      setSearch(text);\n    } else {\n      // Inserted text is blank\n      // Update FilteredDataSource with masterDataSource\n      setFilteredDataSource(masterDataSource);\n      setSearch(text);\n    }\n  };\n\n  const ItemView = ({ item }) => {\n    return (\n      // Flat List Item\n      <Text style={styles.itemStyle} onPress={() => getItem(item)}>\n        {item.id}\n        {'.'}\n        {item.title.toUpperCase()}\n      </Text>\n    );\n  };\n\n  const ItemSeparatorView = () => {\n    return (\n      // Flat List Item Separator\n      <View\n        style={{\n          height: 0.5,\n          width: '100%',\n          backgroundColor: '#C8C8C8',\n        }}\n      />\n    );\n  };\n\n  const getItem = (item) => {\n    // Function for click on an item\n    alert('Id : ' + item.id + ' Title : ' + item.title);\n  };\n\n  return (\n    <SafeAreaView style={{ flex: 1 }}>\n      <View style={styles.container}>\n        <SearchBar\n          round\n          searchIcon={{ size: 24 }}\n          onChangeText={(text) => searchFilterFunction(text)}\n          onClear={(text) => searchFilterFunction('')}\n          placeholder=\"Type Here...\"\n          value={search}\n        />\n        <FlatList\n          data={filteredDataSource}\n          keyExtractor={(item, index) => index.toString()}\n          ItemSeparatorComponent={ItemSeparatorView}\n          renderItem={ItemView}\n        />\n      </View>\n    </SafeAreaView>\n  );\n};\n\nconst styles = StyleSheet.create({\n  container: {\n    backgroundColor: 'white',\n  },\n  itemStyle: {\n    padding: 10,\n  },\n});\n\nexport default App;\n","type":"CODE"}},"sdkVersion":"38.0.0","created":"2020-09-25T21:02:35.169Z","manifest":{"sdkVersion":"38.0.0","name":"Example of Search Bar in React Native","description":"Search Bar in React Native Example","dependencies":{"react-native-elements":"1.0.0"}},"previewLocation":null,"status":null,"dependencies":{"react-native-elements":{"version":"1.0.0","resolved":"1.0.0","peerDependencies":{}}},"username":"snack","history":[{"hashId":"4ozbKsjYc","savedAt":"2020-09-25T21:02:35.469Z"}],"isDraft":false,"userSnackId":"3707a510-b1f2-11e8-a5ab-81dde22a1896"},"defaults":{"name":"privileged ice cream","channel":"ZFCuZugfVX"}},"splitTestSettings":{"defaultConnectionMethod":"device-id","authFlow":"save2","snackFirstSeen":"2020-12-05"},"postData":null} </script><script charset="utf-8" src="Example%20of%20Search%20Bar%20in%20React%20Native_files/0.js"></script><script charset="utf-8" src="Example%20of%20Search%20Bar%20in%20React%20Native_files/3.js"></script><script charset="utf-8" src="Example%20of%20Search%20Bar%20in%20React%20Native_files/2.js"></script><script charset="utf-8" src="Example%20of%20Search%20Bar%20in%20React%20Native_files/9.js"></script><link charset="utf-8" rel="preload" as="script" href="Example%20of%20Search%20Bar%20in%20React%20Native_files/1.js"><link charset="utf-8" rel="preload" as="script" href="Example%20of%20Search%20Bar%20in%20React%20Native_files/5.js"><script charset="utf-8" src="Example%20of%20Search%20Bar%20in%20React%20Native_files/1.js"></script><script charset="utf-8" src="Example%20of%20Search%20Bar%20in%20React%20Native_files/5.js"></script><meta property="og:url" content="https://snack.expo.io/@aboutreact/example-of-search-bar-in-react-native" data-rh="true"><meta property="og:title" content="Example of Search Bar in React Native" data-rh="true"><meta property="og:description" content="Search Bar in React Native Example" data-rh="true"><meta property="og:type" content="website" data-rh="true"><meta property="og:image" content="https://s3.amazonaws.com/exp-brand-assets/ExpoIcon_200.png" data-rh="true"><meta property="og:image:width" content="200" data-rh="true"><meta property="og:image:height" content="200" data-rh="true"><script charset="utf-8" src="Example%20of%20Search%20Bar%20in%20React%20Native_files/27.js"></script><script charset="utf-8" src="Example%20of%20Search%20Bar%20in%20React%20Native_files/17.js"></script></head><body><div id="root"><div class="_pyl55co"><main class="_u0zi0h"><div class="_1ni954r"><div class="_486qrv"><h1 class="_xbazx0">Example of Search Bar in React Native</h1><div class="_14qlmkj"><div class="_1p7kgfo"><button class="_1gg8ropu"></button><div class="_1rmebf4n"><span class="_1q1e53j"></span><p class="_1l06a80">Search Bar in React Native Example</p></div></div><button class="_1ctczj5u"></button></div></div><a href="https://expo.io/" target="_blank" rel="noopener noreferrer" class="_1nxz9oj"><img class="_dp38z" src="Example%20of%20Search%20Bar%20in%20React%20Native_files/e392635154a17bd759d3bbb77e72eada.png"></a></div><div class="_1vjpwpl"><div class="_szqwpm"><div class="_1r4fbvz prism-code" style="position: relative; text-align: left; box-sizing: border-box; padding: 0px; overflow: hidden;"><textarea style="margin: 0px; border: 0px none; background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; box-sizing: inherit; display: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-ligatures: inherit; font-weight: inherit; letter-spacing: inherit; line-height: inherit; text-indent: inherit; text-rendering: inherit; text-transform: inherit; white-space: pre-wrap; word-break: keep-all; overflow-wrap: break-word; position: absolute; top: 0px; left: 0px; height: 100%; width: 100%; resize: none; color: inherit; overflow: hidden; -webkit-text-fill-color: transparent; padding: 8px;" class="npm__react-simple-code-editor__textarea" autocapitalize="none" autocomplete="off" autocorrect="off" spellcheck="false" data-gramm="false">// Searching using Search Bar Filter in React Native List View
+// https://aboutreact.com/react-native-search-bar-filter-on-listview/
+
+// import React in our code
+import React, { useState, useEffect } from 'react';
+
+// import all the components we are going to use
+import { SafeAreaView, Text, StyleSheet, View, FlatList } from 'react-native';
+import { SearchBar } from 'react-native-elements';
+
+const App = () =&gt; {
+  const [search, setSearch] = useState('');
+  const [filteredDataSource, setFilteredDataSource] = useState([]);
+  const [masterDataSource, setMasterDataSource] = useState([]);
+
+  useEffect(() =&gt; {
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then((response) =&gt; response.json())
+      .then((responseJson) =&gt; {
+        setFilteredDataSource(responseJson);
+        setMasterDataSource(responseJson);
+      })
+      .catch((error) =&gt; {
+        console.error(error);
+      });
+  }, []);
+
+  const searchFilterFunction = (text) =&gt; {
+    // Check if searched text is not blank
+    if (text) {
+      // Inserted text is not blank
+      // Filter the masterDataSource
+      // Update FilteredDataSource
+      const newData = masterDataSource.filter(function (item) {
+        const itemData = item.title
+          ? item.title.toUpperCase()
+          : ''.toUpperCase();
+        const textData = text.toUpperCase();
+        return itemData.indexOf(textData) &gt; -1;
+      });
+      setFilteredDataSource(newData);
+      setSearch(text);
+    } else {
+      // Inserted text is blank
+      // Update FilteredDataSource with masterDataSource
+      setFilteredDataSource(masterDataSource);
+      setSearch(text);
+    }
+  };  
+  const ItemView = ({ item }) =&gt; {
+    return (
+      // Flat List Item
+      &lt;Text style={styles.itemStyle} onPress={() =&gt; getItem(item)}&gt;
+        {item.id}
+        {'.'}
+        {item.title.toUpperCase()}
+      &lt;/Text&gt;
+    );
+  };  
+
+  const ItemSeparatorView = () =&gt; {
+    return (
+      // Flat List Item Separator
+      &lt;View
+        style={{
+          height: 0.5,
+          width: '100%',
+          backgroundColor: '#C8C8C8',
+        }}
+      /&gt;
+    );
+  };
+
+  const getItem = (item) =&gt; {
+    // Function for click on an item
+    alert('Id : ' + item.id + ' Title : ' + item.title);
+  };
+
+  return (
+    &lt;SafeAreaView style={{ flex: 1 }}&gt;
+      &lt;View style={styles.container}&gt;
+        &lt;SearchBar
+          round
+          searchIcon={{ size: 24 }}
+          onChangeText={(text) =&gt; searchFilterFunction(text)}
+          onClear={(text) =&gt; searchFilterFunction('')}
+          placeholder="Type Here..."
+          value={search}
+        /&gt;
+        &lt;FlatList
+          data={filteredDataSource}
+          keyExtractor={(item, index) =&gt; index.toString()}
+          ItemSeparatorComponent={ItemSeparatorView}
+          renderItem={ItemView}
+        /&gt;
+      &lt;/View&gt;
+    &lt;/SafeAreaView&gt;
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'white',
+  },
+  itemStyle: {
+    padding: 10,
+  },
+});
+
+export default App;
+</textarea><pre aria-hidden="true" style="margin: 0px; border: 0px none; background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; box-sizing: inherit; display: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-ligatures: inherit; font-weight: inherit; letter-spacing: inherit; line-height: inherit; text-indent: inherit; text-rendering: inherit; text-transform: inherit; white-space: pre-wrap; word-break: keep-all; overflow-wrap: break-word; position: relative; pointer-events: none; padding: 8px;"><span class="token comment">// Searching using Search Bar Filter in React Native List View</span>
+<span class="token comment">// https://aboutreact.com/react-native-search-bar-filter-on-listview/</span>
+
+<span class="token comment">// import React in our code</span>
+<span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> useState<span class="token punctuation">,</span> useEffect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// import all the components we are going to use</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> SafeAreaView<span class="token punctuation">,</span> Text<span class="token punctuation">,</span> StyleSheet<span class="token punctuation">,</span> View<span class="token punctuation">,</span> FlatList <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-native'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> SearchBar <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-native-elements'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>search<span class="token punctuation">,</span> setSearch<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>filteredDataSource<span class="token punctuation">,</span> setFilteredDataSource<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>masterDataSource<span class="token punctuation">,</span> setMasterDataSource<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'https://jsonplaceholder.typicode.com/posts'</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">responseJson</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token function">setFilteredDataSource</span><span class="token punctuation">(</span>responseJson<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">setMasterDataSource</span><span class="token punctuation">(</span>responseJson<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> <span class="token function-variable function">searchFilterFunction</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">text</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Check if searched text is not blank</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>text<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// Inserted text is not blank</span>
+      <span class="token comment">// Filter the masterDataSource</span>
+      <span class="token comment">// Update FilteredDataSource</span>
+      <span class="token keyword">const</span> newData <span class="token operator">=</span> masterDataSource<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> itemData <span class="token operator">=</span> item<span class="token punctuation">.</span>title
+          <span class="token operator">?</span> item<span class="token punctuation">.</span>title<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+          <span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">const</span> textData <span class="token operator">=</span> text<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> itemData<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>textData<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">setFilteredDataSource</span><span class="token punctuation">(</span>newData<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">setSearch</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token comment">// Inserted text is blank</span>
+      <span class="token comment">// Update FilteredDataSource with masterDataSource</span>
+      <span class="token function">setFilteredDataSource</span><span class="token punctuation">(</span>masterDataSource<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">setSearch</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>  
+  <span class="token keyword">const</span> <span class="token function-variable function">ItemView</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> item <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token comment">// Flat List Item</span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Text</span></span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>styles<span class="token punctuation">.</span>itemStyle<span class="token punctuation">}</span></span> <span class="token attr-name">onPress</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">getItem</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+        </span><span class="token punctuation">{</span>item<span class="token punctuation">.</span>id<span class="token punctuation">}</span><span class="token plain-text">
+        </span><span class="token punctuation">{</span><span class="token string">'.'</span><span class="token punctuation">}</span><span class="token plain-text">
+        </span><span class="token punctuation">{</span>item<span class="token punctuation">.</span>title<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Text</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>  
+
+  <span class="token keyword">const</span> <span class="token function-variable function">ItemSeparatorView</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token comment">// Flat List Item Separator</span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">View</span></span>
+        <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
+          height<span class="token operator">:</span> <span class="token number">0.5</span><span class="token punctuation">,</span>
+          width<span class="token operator">:</span> <span class="token string">'100%'</span><span class="token punctuation">,</span>
+          backgroundColor<span class="token operator">:</span> <span class="token string">'#C8C8C8'</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+      <span class="token punctuation">/&gt;</span></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> <span class="token function-variable function">getItem</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Function for click on an item</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'Id : '</span> <span class="token operator">+</span> item<span class="token punctuation">.</span>id <span class="token operator">+</span> <span class="token string">' Title : '</span> <span class="token operator">+</span> item<span class="token punctuation">.</span>title<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">SafeAreaView</span></span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> flex<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">View</span></span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>styles<span class="token punctuation">.</span>container<span class="token punctuation">}</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">SearchBar</span></span>
+          <span class="token attr-name">round</span>
+          <span class="token attr-name">searchIcon</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> size<span class="token operator">:</span> <span class="token number">24</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+          <span class="token attr-name">onChangeText</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter">text</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">searchFilterFunction</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">}</span></span>
+          <span class="token attr-name">onClear</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter">text</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">searchFilterFunction</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>
+          <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Type Here...<span class="token punctuation">"</span></span>
+          <span class="token attr-name">value</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>search<span class="token punctuation">}</span></span>
+        <span class="token punctuation">/&gt;</span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">FlatList</span></span>
+          <span class="token attr-name">data</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>filteredDataSource<span class="token punctuation">}</span></span>
+          <span class="token attr-name">keyExtractor</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter">item<span class="token punctuation">,</span> index</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> index<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>
+          <span class="token attr-name">ItemSeparatorComponent</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>ItemSeparatorView<span class="token punctuation">}</span></span>
+          <span class="token attr-name">renderItem</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>ItemView<span class="token punctuation">}</span></span>
+        <span class="token punctuation">/&gt;</span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">View</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">SafeAreaView</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> styles <span class="token operator">=</span> StyleSheet<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  container<span class="token operator">:</span> <span class="token punctuation">{</span>
+    backgroundColor<span class="token operator">:</span> <span class="token string">'white'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  itemStyle<span class="token operator">:</span> <span class="token punctuation">{</span>
+    padding<span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> App<span class="token punctuation">;</span>
+<br></pre><style type="text/css">
+/**
+ * Reset the text fill color so that placeholder is visible
+ */
+.npm__react-simple-code-editor__textarea:empty {
+  -webkit-text-fill-color: inherit !important;
+}
+
+/**
+ * Hack to apply on some CSS on IE10 and IE11
+ */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /**
+    * IE doesn't support '-webkit-text-fill-color'
+    * So we use 'color: transparent' to make the text transparent on IE
+    * Unlike other browsers, it doesn't affect caret color in IE
+    */
+  .npm__react-simple-code-editor__textarea {
+    color: transparent !important;
+  }
+
+  .npm__react-simple-code-editor__textarea::selection {
+    background-color: #accef7 !important;
+    color: transparent !important;
+  }
+}
+</style></div><style type="text/css">
+  .prism-code {
+    background-color: #212121;
+    color: #d9d7ce;
+  }
+
+  .prism-code ::selection {
+    background: #aaaaaa;
+  }
+
+  .prism-code ::-moz-selection {
+    background: #aaaaaa;
+  }
+
+  .prism-code textarea {
+    outline: 0;
+  }
+
+  .prism-code .token.tag,
+  .prism-code .token.property {
+    color: #5ccfe6;
+  }
+
+  .prism-code .token.function {
+    color: #ff9d45;
+  }
+
+  .prism-code .token.entity {
+    color: #5ccfe6;
+  }
+
+  .prism-code .token.string,
+  .prism-code .token.selector,
+  .prism-code .token.char,
+  .prism-code .token.builtin,
+  .prism-code .token.inserted {
+    color: #bae67e;
+  }
+
+  .prism-code .token.regexp,
+  .prism-code .token.variable {
+    color: #95e6cb;
+  }
+
+  .prism-code .token.keyword,
+  .prism-code .token.atrule,
+  .prism-code .token.tag > .token.punctuation,
+  .prism-code .token.important {
+    color: #ffae57;
+  }
+
+  .prism-code .token.attr-name {
+    color: #ff9d45;
+  }
+
+  .prism-code .token.attr-value {
+    color: #bae67e;
+  }
+
+  .prism-code .token.markup,
+  .prism-code .token.special {
+    color: #ff00ff;
+  }
+
+  .prism-code .token.comment,
+  .prism-code .token.prolog,
+  .prism-code .token.doctype,
+  .prism-code .token.cdata {
+    color: #5c6773;
+  }
+
+  .prism-code .token.number {
+    color: #ff9d45;
+  }
+
+  .prism-code .token.constant,
+  .prism-code .token.boolean,
+  .prism-code .token.constant,
+  .prism-code .token.symbol,
+  .prism-code .token.deleted {
+    color: #ff9d45;
+  }
+
+  .prism-code .token.operator,
+  .prism-code .token.entity,
+  .prism-code .token.url,
+  .prism-code .language-css .token.string,
+  .prism-code .style .token.string {
+    color: #778899;
+  }
+
+  .prism-code .token.punctuation {
+    color: #5c6773;
+  }
+</style></div><div class="_o1jlxi _gytpg0" style="width: 285px;"><div class="_107ffsm" style="width: 285px;"><div class="_138iumq"><h3 class="_12to336">Download the <a class="_1imyoeo" href="https://expo.io/client" target="blank">Expo Client</a> and<br>scan the QR code to get started.</h3><div class="_6obvsu" style="width: 265px; height: 265px;"><div><canvas style="height: 245px; width: 245px;" height="367" width="367"></canvas><div style="font-size: 6px; color: transparent;">exp://expo.io/@aboutreact/example-of-search-bar-in-react-native+ZFCuZugfVX</div></div></div><div class="_bc4egv"></div><div class="_1yzgka6"><div class="_1ju19naa"><div class="_11iv8a4"><h3>Connected devices</h3><span class="_hcjn88">0</span></div><div class="_1qd1muk"><div class="_rrjeex"><button style="background-image: url(&quot;/dist/assets/48505df7e1a1eb25606c4789c3a3e235.png&quot;);" class="_1mf56od"></button></div></div></div><p class="_yhb5k1">This app is visible on the "Projects" tab of your signed in Expo client. Or set a <button class="_1imyoeo">Device ID</button>.</p><div class="_1cpmuw6"><div class="_indtl4"><img class="_gu9ys3" src="Example%20of%20Search%20Bar%20in%20React%20Native_files/6b544ca2f9529bc2b22aa6978ebd5862.svg"></div><div class="_1qq3158"><h4 class="_v28dnw">Example of Search Bar in React Native</h4><p class="_9zyrn9">exp://expo.io/@aboutreact/example-of-search-bar-in-react-native+ZFCuZugfVX</p></div></div></div></div></div></div></div><div class="_1uxvl"><div class="_1xgmrj2"><div></div><div class="_1ik16kg"><label class="_1jlqsc5 _1rhvzb"><span class="_12lll1p">Preview</span><span class="_59x0nja"></span><input type="checkbox" class="_1u9fru1" checked="checked"></label><span class="_154j88y"><button class="_1asfepfb">My Device</button><button class="_o6pkgg">iOS</button><button class="_o6pkgg">Android</button><button class="_o6pkgg">Web</button></span></div></div></div></main><div></div></div></div><script>(function(e,t){var n=e.amplitude||{_q:[],_iq:{}};var r=t.createElement("script")
+    ;r.type="text/javascript"
+    ;r.integrity="sha384-girahbTbYZ9tT03PWWj0mEVgyxtZoyDF9KVZdL+R53PP5wCY0PiVUKq0jeRlMx9M"
+    ;r.crossOrigin="anonymous";r.async=true
+    ;r.src="https://cdn.amplitude.com/libs/amplitude-7.2.1-min.gz.js"
+    ;r.onload=function(){if(!e.amplitude.runQueuedFunctions){
+    console.log("[Amplitude] Error: could not load SDK")}}
+    ;var i=t.getElementsByTagName("script")[0];i.parentNode.insertBefore(r,i)
+    ;function s(e,t){e.prototype[t]=function(){
+    this._q.push([t].concat(Array.prototype.slice.call(arguments,0)));return this}}
+    var o=function(){this._q=[];return this}
+    ;var a=["add","append","clearAll","prepend","set","setOnce","unset"]
+    ;for(var c=0;c<a.length;c++){s(o,a[c])}n.Identify=o;var u=function(){this._q=[]
+    ;return this}
+    ;var l=["setProductId","setQuantity","setPrice","setRevenueType","setEventProperties"]
+    ;for(var p=0;p<l.length;p++){s(u,l[p])}n.Revenue=u
+    ;var d=["init","logEvent","logRevenue","setUserId","setUserProperties","setOptOut","setVersionName","setDomain","setDeviceId","enableTracking","setGlobalUserProperties","identify","clearUserProperties","setGroup","logRevenueV2","regenerateDeviceId","groupIdentify","onInit","logEventWithTimestamp","logEventWithGroups","setSessionId","resetSessionId"]
+    ;function v(e){function t(t){e[t]=function(){
+    e._q.push([t].concat(Array.prototype.slice.call(arguments,0)))}}
+    for(var n=0;n<d.length;n++){t(d[n])}}v(n);n.getInstance=function(e){
+    e=(!e||e.length===0?"$default_instance":e).toLowerCase()
+    ;if(!n._iq.hasOwnProperty(e)){n._iq[e]={_q:[]};v(n._iq[e])}return n._iq[e]}
+    ;e.amplitude=n})(window,document);
+
+    amplitude.getInstance().init("e91121c19a5bdcccd852cd032dc911fe");</script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-53647600-5', {cookieDomain: 'auto', siteSpeedSampleRate: 100});ga('send', 'pageview');</script><script src="Example%20of%20Search%20Bar%20in%20React%20Native_files/polyfill.js"></script><script src="Example%20of%20Search%20Bar%20in%20React%20Native_files/app.js"></script><div><div class="_1wt0jcd5"><div class="_1ba9hs1"></div></div></div><div><div class="_1wt0jcd5"><div class="_1ba9hs1"></div></div></div></body></html>
