@@ -22,7 +22,7 @@ const DrawerNavigator = () => {
             }}
 
         >
-            <Drawer.Screen name="Traveling" component={TabNavigator} />
+            <Drawer.Screen name="Home" component={TabNavigator} />
         </Drawer.Navigator>
     );
 }

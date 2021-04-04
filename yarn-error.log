@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\SONY\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add react-native-read-more-text
+  C:\Program Files\nodejs\node.exe C:\Users\SONY\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add expo-av@~8.7.0
 
 PATH: 
   C:\Program Files\Git\mingw32\bin;C:\Program Files\Git\usr\bin;C:\Users\SONY\bin;C:\Program Files\AdoptOpenJDK\jdk-11.0.3.7-hotspot\bin;C:\Program Files;C:\Program Files\Java\jre1.8.0_201;C:\Program Files\Java\lib;C:\Program Files\Git\cmd;C:\Program Files\Git\usr\bin;C:\Program Files\MySQL\MySQL Server 5.5\bin;C:\Program Files\nodejs;C:\Program Files\Windows Kits\8.1\Windows Performance Toolkit;C:\Users\SONY\AppData\Local\Programs\Python\Python38-32\Scripts;C:\Users\SONY\AppData\Local\Programs\Python\Python38-32;C:\Program Files\Java\bin;C:\Users\SONY\AppData\Local\Programs\Python\Python37-32\Scripts;C:\Users\SONY\AppData\Local\Programs\Python\Python37-32;C:\Users\SONY\AppData\Local\Programs\Python\Python36-32\Scripts;C:\Users\SONY\AppData\Local\Programs\Python\Python36-32;C:\TDM-GCC-32\bin;C:\Program Files\Java\jdk1.8.0_172;C:\Users\SONY\.dotnet\tools;C:\Windows\system32;C:\wamp\bin\php\php7.4.0;C:\Users\SONY\AppData\Local\Programs\Microsoft VS Code\bin;C:\Windows\System32;C:\Users\SONY\AppData\Roaming\npm;C:\Program Files\JetBrains\PyCharm 2018.3.7\bin;C:\Users\SONY\AppData\Roaming\npm;C:\Program Files\GnuWin32\bin;E:\Setup\curl-7.72.0-win32-mingw\bin;C:\Program Files\GnuWin32\bin
@@ -48,7 +48,10 @@ npm manifest:
       "react-native-elements": "^3.0.0-alpha.1",
       "react-native-gesture-handler": "~1.8.0",
       "react-native-maps": "0.27.1",
+      "react-native-modal-select-option": "^0.0.7",
+      "react-native-multiple-select": "^0.5.6",
       "react-native-paper": "^4.4.1",
+      "react-native-read-more-text": "^1.1.2",
       "react-native-reanimated": "~1.13.0",
       "react-native-safe-area": "^0.5.1",
       "react-native-safe-area-context": "3.1.9",
@@ -5431,6 +5434,18 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.27.1.tgz#2f10cd417bb2fd938c9e015b1c9b6d9b1a44b97f"
     integrity sha512-HygBkZBecTnIVRYrSiLRAvu4OmXOYso/A7c6Cy73HkOh9CgGV8Ap5eBea24tvmFGptjj5Hg8AJ94/YbmWK1Okw==
   
+  react-native-modal-select-option@^0.0.7:
+    version "0.0.7"
+    resolved "https://registry.yarnpkg.com/react-native-modal-select-option/-/react-native-modal-select-option-0.0.7.tgz#6b2cea812c0b3a64d1a748073e96687b5b68d6e4"
+    integrity sha512-Itf+jKt2VWTaZToFTUhi++GEmV1ttqIkM/caVXLZV8ZX1OllkkIH6H46/6Kv/zGOaIgT94BeejhftWqcEi6faQ==
+  
+  react-native-multiple-select@^0.5.6:
+    version "0.5.6"
+    resolved "https://registry.yarnpkg.com/react-native-multiple-select/-/react-native-multiple-select-0.5.6.tgz#e13a362f1730d6988ed57cfe310b2e7a84e6f7f6"
+    integrity sha512-I6H7dcVZLy2ToyJ9mv0ANIDnBIcrUfVyEN3jCgPNG8sLyK6JMMNgJwqlJxrlPOaJVjiDjHkF0viu6LjohQFhhQ==
+    dependencies:
+      prop-types "^15.7.2"
+  
   react-native-paper@^4.4.1:
     version "4.4.1"
     resolved "https://registry.yarnpkg.com/react-native-paper/-/react-native-paper-4.4.1.tgz#b2fb7c0889fd15d52d6fd5c27df13075104ef911"
@@ -5447,6 +5462,11 @@ Lockfile:
     dependencies:
       lodash "^4.17.15"
       prop-types "^15.7.2"
+  
+  react-native-read-more-text@^1.1.2:
+    version "1.1.2"
+    resolved "https://registry.yarnpkg.com/react-native-read-more-text/-/react-native-read-more-text-1.1.2.tgz#3f64aee61ec4d3109437f4125f10e49eccdee65a"
+    integrity sha512-FIQhOpvikUanwPRl9QVBYmx6Wx7IXxXH/jlzElOLcP+NSgFLw2fRzSekQUq0yicymZsi7cAWW5TtIj8FHWtNDw==
   
   react-native-reanimated@~1.13.0:
     version "1.13.2"

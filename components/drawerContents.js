@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Image, ScrollView, FlatList, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
 import {
     DrawerItem,
     DrawerContentScrollView,
@@ -12,60 +12,20 @@ import {
     Paragraph,
     Drawer,
     Text,
-    Switch,
     TouchableRipple,
-    Card
+    Switch,
+    TouchableOpacity,
 } from 'react-native-paper';
+
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native'
-import { TouchableHighlight } from 'react-native-gesture-handler';
 // import Profile from './profile'
-const Item = ({ title }) => (
-    <View>
-
-        <TouchableOpacity>
-            <Card style={{ borderRadius: 4, borderWidth: 1, margin: 2 }}>
-                <Text style={{ marginLeft: 30, marginBottom: 5, marginTop: 5 }}>{title}</Text>
-            </Card>
-        </TouchableOpacity>
-
-    </View>
-);
 
 
 export function DrawerContent(props) {
 
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => setIsEnabled(isEnabled => !isEnabled);
-    const item = [
-        {
-            id: '1',
-            title: ' Arial',
-        },
-        {
-            id: '2',
-            title: 'Verdana',
-        },
-        {
-            id: '3',
-            title: 'Helvetica',
-        },
-        {
-            id: '4',
-            title: 'Futura',
-        },
-        {
-            id: '5',
-            title: 'Calibri',
-        },
-        {
-            id: '6',
-            title: 'Century Gothic',
-        }
-    ];
-    const renderItem = ({ item }) => (
-        <Item title={item.title} />
-    );
     // const navigation = useNavigation()
     return (
 
@@ -88,18 +48,38 @@ export function DrawerContent(props) {
 
                     <Title style={styles.title}>Tailor Aaditya</Title>
                 </View>
+                <Drawer.Section style={styles.drawerSection}>
+                    <DrawerItem
+                        icon={({ color, size }) => (
+                            <MaterialCommunityIcons
+                                name="account-outline"
+                                color={color}
+                                size={size}
+                            />
+                        )}
+                        label="Profile"
+                        onPress={() => { }}
+                    />
+                    <DrawerItem
+                        icon={({ color, size }) => (
+                            <MaterialCommunityIcons name="tune" color={color} size={size} />
+                        )}
+                        label="Preferences"
+                        onPress={() => { }}
+                    />
+                    <DrawerItem
+                        icon={({ color, size }) => (
+                            <MaterialCommunityIcons
+                                name="bookmark-outline"
+                                color={color}
+                                size={size}
+                            />
+                        )}
+                        label="Bookmarks"
+                        onPress={() => { }}
+                    />
+                </Drawer.Section>
                 <Drawer.Section title="Preferences">
-                    <Drawer.Section title="Select Font">
-
-
-                        <FlatList
-                            data={item}
-                            renderItem={renderItem}
-                            keyExtractor={item => item.id}
-                        />
-
-                    </Drawer.Section>
-
                     <TouchableRipple>
                         <View style={styles.preference}>
                             <Text>Dark Theme</Text>
@@ -115,7 +95,7 @@ export function DrawerContent(props) {
                         </View>
                     </TouchableRipple>
                 </Drawer.Section>
-                <Image source={require('../assets/timetotravel.jpg')} style={{ width: 270, height: 165 }} />
+                <Image source={require('../assets/timetotravel.jpg')} style={{ width: 270, height: 170, marginTop: 120 }} />
             </View>
         </DrawerContentScrollView>
 
@@ -129,13 +109,10 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     userInfoSection: {
-        flex: 1,
-        flexDirection: "row",
         paddingLeft: 20,
     },
     title: {
-        marginTop: 10,
-        marginLeft: 10,
+        marginTop: 20,
         fontWeight: 'bold',
     },
     caption: {

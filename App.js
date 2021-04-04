@@ -65,7 +65,7 @@ export default function App() {
 	return (
 		<NavigationContainer>
 			<SafeAreaProvider>
-				<TabNavigator />
+				<DrawerNavigator />
 			</SafeAreaProvider>
 		</NavigationContainer>
 	);

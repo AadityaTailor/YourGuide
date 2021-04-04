@@ -2,19 +2,19 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import Traveling from "../components/home/traveling";
+import Travel from "../components/home/travel";
 import Maps from '../components/home/map'
-import Video from '../components/home/Video'
+import video from '../components/home/Video'
 import Wiki from '../components/home/wiki'
 import Profile from '../components/profile'
-import TabNavigator from './TabNavigator'
-import AuthStackScreen from './AuthStack'
+import Country from '../components/home/country'
+
 const Stack = createStackNavigator();
 
 const MainStackNavigator = () => {
     return (
         <Stack.Navigator
-            initialRouteName="Traveling"
+            initialRouteName="Country"
             screenOptions={{
                 headerTitleAlign: 'center',
                 headerStyle: {
@@ -24,13 +24,12 @@ const MainStackNavigator = () => {
                 headerTitleStyle: {
                     fontWeight: 'bold',
                 },
-                headerShown: false
+                headerShown: false,
             }}>
             <Stack.Screen
-                name="Traveling"
-                component={Traveling}
+                name="Travel"
+                component={Travel}
                 options={
-
                     { title: 'Traveling' },
                     { headerLeft: null }
                 }
@@ -43,9 +42,18 @@ const MainStackNavigator = () => {
                 }
             />
             <Stack.Screen
-                name="Video"
-                component={Video}
-                options={{ title: 'Video' }}
+                name="Country"
+                component={Country}
+                options={
+                    { title: 'Country' }
+                }
+            />
+            <Stack.Screen
+                name="video"
+                component={video}
+                options={
+                    { title: 'Video' }
+                }
             />
             <Stack.Screen
                 name="Wiki"
@@ -57,10 +65,7 @@ const MainStackNavigator = () => {
                 component={Profile}
                 options={{ title: 'Profile' }}
             />
-            <Stack.Screen
-                name="TabNavigator"
-                component={TabNavigator}
-            />
+
         </Stack.Navigator>
     );
 }

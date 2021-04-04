@@ -7,7 +7,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Traveling from "../components/home/traveling";
 import BookMark from "../components/bookMark";
 import Maps from "../components/home/map";
-
+import Country from '../components/home/country'
 import About from '../components/about'
 import Account from '../components/account'
 import MainStackNavigator from "./StackNavigator";
@@ -19,14 +19,14 @@ const Tab = createMaterialBottomTabNavigator();
 // #0984e3
 const TabNavigator = () => {
     return (
-        <Tab.Navigator initialRouteName="Traveling" activeColor="#000" shifting>
+        <Tab.Navigator initialRouteName="Country" activeColor="#000" shifting>
             <Tab.Screen
-                name="Traveling"
+                name="Country"
                 component={MainStackNavigator}
                 options={{
                     tabBarLabel: "Explore",
                     // tabBarColor: "rgb(148, 114, 130)",
-                    tabBarColor: "#fff",
+                    tabBarColor: "#00b894",
                     tabBarIcon: ({ color }) => (
                         <MaterialCommunityIcons name="home-outline" color="black" size={26} />
                     ),
@@ -38,7 +38,7 @@ const TabNavigator = () => {
                 options={{
                     tabBarLabel: "BookMark",
                     // tabBarColor: "#00b894",
-                    tabBarColor: "#fff",
+                    tabBarColor: "#4484ff",
                     tabBarIcon: ({ color }) => (
                         <MaterialCommunityIcons
                             name="bookmark-outline"
@@ -54,7 +54,7 @@ const TabNavigator = () => {
                 options={{
                     tabBarLabel: "Map",
                     // tabBarColor: "rgb(164, 132, 245)",
-                    tabBarColor: "#fff",
+                    tabBarColor: "rgb(245, 245, 12)",
                     tabBarIcon: ({ color }) => (
                         <MaterialCommunityIcons name="google-maps" color="black" size={26} />
                     ),
@@ -66,7 +66,7 @@ const TabNavigator = () => {
                 options={{
                     tabBarLabel: "Account",
                     // tabBarColor: "#fd79a8",
-                    tabBarColor: "#fff",
+                    tabBarColor: "#fd79a8",
                     tabBarIcon: ({ color }) => (
                         <MaterialCommunityIcons name="account-outline" color="black" size={26} />
                     ),
