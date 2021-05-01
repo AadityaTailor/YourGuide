@@ -14,7 +14,7 @@ import { Feather } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import SafeAreaView from 'react-native-safe-area-view'
 import { MaterialIcons } from '@expo/vector-icons'
-import DropdownMenu from 'react-native-dropdown-menu'
+import GallerySwiper from "react-native-gallery-swiper"
 
 import video from './Video'
 import MapView from 'react-native-maps'
@@ -42,8 +42,8 @@ const Travel = ({ route, navigation }) => {
     async function fetch(country) {
         console.log("indside fectch", country)
         // Parse.setAsyncStorage(AsyncStorage)
-        Parse.serverURL = 'https://travell.back4app.io';
-        Parse.initialize('Hf5BCYdCc60ETnE27Bq3816QXAzc2HFr5bqzdHi2', 'xKZOmFZynEczbPVAfnPYk47hkezEHoSSQm38QpAu', 'naoEAPPljcUy94i1MBbKKyLrmRNpw3w8K27cKE4S');
+        Parse.serverURL = 'https://yourgude.b4a.io';
+        Parse.initialize('A8y1qtKnErg69N17IKAACVYuHUao65JRfkoakUuK', 'tLsWixwPxTel1uEVyBImI9jVnKCB5Xeat7opnxPz', 'cJQXK6TCdljtWy39hc7j4MG1Msj5mow132NW4KdE');
 
         const Travel = Parse.Object.extend(country);
         const query = new Parse.Query(Travel);
@@ -116,17 +116,30 @@ const Travel = ({ route, navigation }) => {
 
                         data.map((obj) => {
                             const a = obj[1].lat
-                            const b = obj[1].long
+                            const b = obj[1].lon
                             const w = obj[1].wiki
                             const v = obj[1].youtube
                             const desc = obj[1].desc
                             const name = obj[1].name
-                            const img = obj[1].img
 
                             return (
                                 <View key={obj[0]}>
                                     <Card style={styles.card}>
-                                        <Card.Cover source={{ uri: obj[1].img }} />
+
+                                        <Card style={{ height: 250, width: 380 }}>
+                                            <GallerySwiper
+                                                images={[
+                                                    { url: obj[1].img, dimensions: { width: 1240, height: 320 } },
+                                                    { url: obj[1].img1, dimensions: { width: 1240, height: 320 } },
+                                                    { url: obj[1].img2, dimensions: { width: 1240, height: 320 } },
+                                                ]}
+                                                useNativeDriver={true}
+                                            // Version *1.15.0 update
+                                            // onEndReached={() => {
+                                            //     // add more images when scroll reaches end
+                                            // }}
+                                            />
+                                        </Card>
 
                                         <View style={{ flex: 1, flexDirection: "row" }}>
 
@@ -137,7 +150,7 @@ const Travel = ({ route, navigation }) => {
                                                     icon="share"
                                                     color="black"
                                                     size={25}
-                                                    onPress={() => execute(name, img, desc)}
+                                                    onPress={() => execute(name, obj[1].img, desc)}
                                                     style={{ margin: 6 }}
                                                 />
                                             </Card>

@@ -26,9 +26,12 @@ class Country extends React.Component {
 	}
 	async UNSAFE_componentWillMount() {
 		Parse.setAsyncStorage(AsyncStorage)
-		Parse.serverURL = 'https://travell.back4app.io';
-		Parse.initialize('Hf5BCYdCc60ETnE27Bq3816QXAzc2HFr5bqzdHi2', 'xKZOmFZynEczbPVAfnPYk47hkezEHoSSQm38QpAu', 'naoEAPPljcUy94i1MBbKKyLrmRNpw3w8K27cKE4S');
-
+		Parse.serverURL = 'https://yourgude.b4a.io'; // This is your Server URL
+		Parse.initialize(
+			'A8y1qtKnErg69N17IKAACVYuHUao65JRfkoakUuK', // This is your Application ID
+			'tLsWixwPxTel1uEVyBImI9jVnKCB5Xeat7opnxPz', // This is your Javascript key
+			'cJQXK6TCdljtWy39hc7j4MG1Msj5mow132NW4KdE' // This is your Master key (never use it in the frontend)
+		);
 		const cname = Parse.Object.extend('country');
 		const query = new Parse.Query(cname);
 

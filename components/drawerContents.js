@@ -5,7 +5,6 @@ import {
     DrawerContentScrollView,
 } from '@react-navigation/drawer';
 import {
-    useTheme,
     Avatar,
     Title,
     Caption,
@@ -18,7 +17,6 @@ import {
 } from 'react-native-paper';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native'
 // import Profile from './profile'
 
 
@@ -26,7 +24,7 @@ export function DrawerContent(props) {
 
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => setIsEnabled(isEnabled => !isEnabled);
-    // const navigation = useNavigation()
+    
     return (
 
         <DrawerContentScrollView {...props}>

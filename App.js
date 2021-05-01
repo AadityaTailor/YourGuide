@@ -1,7 +1,7 @@
 // App.js
 
 import React, { useState, useEffect } from 'react';
-import { DarkTheme, NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Image } from 'react-native'
@@ -17,7 +17,6 @@ import firebase from './components/database/firebase'
 import StackNavigator from './navigation/StackNavigator'
 
 
-import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 
 
 export default function App() {
