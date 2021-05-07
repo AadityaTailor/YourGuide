@@ -15,7 +15,10 @@ class Country extends React.Component {
 		super(props);
 		this.state = {
 			arr: [],
-			carr: []
+			carr: [],
+			search: true,
+			result: [],
+			searchCountry: ""
 		};
 	}
 	componentDidMount() {
@@ -60,6 +63,19 @@ class Country extends React.Component {
 		Speech.speak("Welcome to " + country)
 
 	}
+	handleSearch = (text) => {
+		if (text==""){
+			this.setState({ searchCountry: text, search: true })
+		}else{
+			this.setState({ searchCountry: text, search: false, result: this.state.arr.filter(word => word[1].cname.toLowerCase().slice(0, 2) == text.toLowerCase().slice(0, 2)) })
+		}
+		// console.log("Result: ", this.state.result)
+		// console.log("Country: ", this.state.arr)
+	}
+	handleRender = () => {
+		this.setState({ ...this.state, search: true })
+		console.log("Hello")
+	}
 
 	render() {
 
@@ -69,16 +85,20 @@ class Country extends React.Component {
 					<View style={{}}>
 						<Searchbar
 							placeholder="Search"
-							onChangeText={() => { }}
-							value={""}
+							onChangeText={(text) => this.handleSearch(text)}
+							value={this.state.searchCountry}
 							onIconPress={() => {
 								this.props.navigation.openDrawer()
 							}}
+							onCancel={this.handleRender}
+							onClear={this.handleRender}
 							icon="menu"
 							style={styles.searchbar}
 						/>
 
-						<ScrollView>
+						{this.state.search ? <ScrollView>
+
+
 							{this.state.arr.map((obj) => {
 								const country = obj[1].cname || " "
 
@@ -90,6 +110,7 @@ class Country extends React.Component {
 												<Card.Content style={{ flexDirection: "row" }}>
 													<Card.Cover source={{ uri: obj[1].flag }} style={{ position: "absolute", height: 60, width: 160, marginLeft: 10, borderRadius: 4, marginTop: 3 }} />
 													<Title style={{ marginLeft: margin, fontFamily: 'Montserrat-SemiBold' }}>{cname}</Title>
+
 													<Paragraph></Paragraph>
 												</Card.Content>
 
@@ -98,10 +119,38 @@ class Country extends React.Component {
 									</View>
 								)
 							})}
+
+
 						</ScrollView>
+							: <ScrollView>
+
+
+								{this.state.result.map((obj) => {
+									const country = obj[1].cname || " "
+
+									const cname = country[0].toUpperCase() + country.slice(1)
+									return (
+										<View key={obj[0]}>
+											<TouchableOpacity onPress={() => { this.twoFun(cname); this.props.navigation.navigate('Travel', { country }) }}>
+												<Card style={{ borderRadius: 13, backgroundColor: "#fffedf", margin: 6, width: '97%' }}>
+													<Card.Content style={{ flexDirection: "row" }}>
+														<Card.Cover source={{ uri: obj[1].flag }} style={{ position: "absolute", height: 60, width: 160, marginLeft: 10, borderRadius: 4, marginTop: 3 }} />
+														<Title style={{ marginLeft: margin, fontFamily: 'Montserrat-SemiBold' }}>{cname}</Title>
+														<Paragraph></Paragraph>
+													</Card.Content>
+
+												</Card>
+											</TouchableOpacity>
+										</View>
+									)
+								})}
+
+
+							</ScrollView>
+						}
 					</View>
 				</SafeAreaView>
-			</SafeAreaProvider >
+			</SafeAreaProvider>
 		)
 	}
 }
