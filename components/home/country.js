@@ -18,7 +18,8 @@ class Country extends React.Component {
 			carr: [],
 			search: true,
 			result: [],
-			searchCountry: ""
+			searchCountry: "",
+			isLoading: true,
 		};
 	}
 	componentDidMount() {
@@ -61,30 +62,38 @@ class Country extends React.Component {
 	}
 	twoFun = (country) => {
 		Speech.speak("Welcome to " + country)
-
 	}
+	notFound = () => {
+		Speech.speak("Opps... Country is Not Found")
+	}
+
 	handleSearch = (text) => {
-		if (text==""){
+		l = text.length
+		if (text == "") {
 			this.setState({ searchCountry: text, search: true })
-		}else{
-			this.setState({ searchCountry: text, search: false, result: this.state.arr.filter(word => word[1].cname.toLowerCase().slice(0, 2) == text.toLowerCase().slice(0, 2)) })
+		} else {
+			this.setState({ searchCountry: text, search: false, result: this.state.arr.filter(word => word[1].cname.toLowerCase().slice(0, l) == text.toLowerCase().slice(0, l)) })
 		}
 		// console.log("Result: ", this.state.result)
 		// console.log("Country: ", this.state.arr)
 	}
 	handleRender = () => {
 		this.setState({ ...this.state, search: true })
-		console.log("Hello")
 	}
 
 	render() {
 
+		if (this.state.isLoading) {
+			return (
+				<ActivityIndicator size="large" color="#000" style={styles.preloader} />
+			)
+		}
 		return (
 			<SafeAreaProvider>
 				<SafeAreaView style={{ flex: 1, }} forceInset={{ top: 'always' }} nestedScrollEnabled={true}>
 					<View style={{}}>
 						<Searchbar
-							placeholder="Search"
+							placeholder="Search here..."
 							onChangeText={(text) => this.handleSearch(text)}
 							value={this.state.searchCountry}
 							onIconPress={() => {
@@ -122,31 +131,35 @@ class Country extends React.Component {
 
 
 						</ScrollView>
-							: <ScrollView>
+							: <View>{
+
+								this.state.result.length > 0 ? <ScrollView>
 
 
-								{this.state.result.map((obj) => {
-									const country = obj[1].cname || " "
+									{this.state.result.map((obj) => {
+										const country = obj[1].cname || " "
 
-									const cname = country[0].toUpperCase() + country.slice(1)
-									return (
-										<View key={obj[0]}>
-											<TouchableOpacity onPress={() => { this.twoFun(cname); this.props.navigation.navigate('Travel', { country }) }}>
-												<Card style={{ borderRadius: 13, backgroundColor: "#fffedf", margin: 6, width: '97%' }}>
-													<Card.Content style={{ flexDirection: "row" }}>
-														<Card.Cover source={{ uri: obj[1].flag }} style={{ position: "absolute", height: 60, width: 160, marginLeft: 10, borderRadius: 4, marginTop: 3 }} />
-														<Title style={{ marginLeft: margin, fontFamily: 'Montserrat-SemiBold' }}>{cname}</Title>
-														<Paragraph></Paragraph>
-													</Card.Content>
+										const cname = country[0].toUpperCase() + country.slice(1)
+										return (
+											<View key={obj[0]}>
+												<TouchableOpacity onPress={() => { this.twoFun(cname); this.props.navigation.navigate('Travel', { country }) }}>
+													<Card style={{ borderRadius: 13, backgroundColor: "#fffedf", margin: 6, width: '97%' }}>
+														<Card.Content style={{ flexDirection: "row" }}>
+															<Card.Cover source={{ uri: obj[1].flag }} style={{ position: "absolute", height: 60, width: 160, marginLeft: 10, borderRadius: 4, marginTop: 3 }} />
+															<Title style={{ marginLeft: margin, fontFamily: 'Montserrat-SemiBold' }}>{cname}</Title>
+															<Paragraph></Paragraph>
+														</Card.Content>
 
-												</Card>
-											</TouchableOpacity>
-										</View>
-									)
-								})}
-
-
-							</ScrollView>
+													</Card>
+												</TouchableOpacity>
+											</View>
+										)
+									})}
+								</ScrollView> : <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: '30%' }}>
+									<Text style={{ color: "#f00" }}>Opps...Country is Not Found</Text>
+								</View>
+							}
+							</View>
 						}
 					</View>
 				</SafeAreaView>
@@ -167,6 +180,11 @@ const styles = StyleSheet.create({
 	},
 	searchbar: {
 		margin: 4,
+	},
+	preloader: {
+		alignItems: 'center',
+		justifyContent: 'center',
+		marginTop: '80%'
 	},
 });
 export default Country;
