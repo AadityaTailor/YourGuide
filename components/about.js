@@ -6,7 +6,7 @@ import * as Location from 'expo-location'
 
 const origin = { latitude: 37.3318456, longitude: -122.0296002 };
 const destination = { latitude: 18.922, longitude: 72.8347 };
-const GOOGLE_MAPS_APIKEY = 'AIzaSyAyeaSpNrfo7OiPoa71WZoNKdw7E5KTkfM';
+const GOOGLE_MAPS_APIKEY = '';
 const { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
 const LATITUDE = 21.2215787;
